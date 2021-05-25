@@ -24,17 +24,52 @@ def generate_alpha(i, alpha, a_list):
         return generate_alpha(i+1, alpha, a_list)
 
 
+def polynomial_generator(a_list, c):
+    g = [0, 0]
+    for i in range(1, c, 1):
+        gb = []
+        for j in g:
+            gb.append((j + i) % 255)
+        g.append(0)
+        for k in range(len(gb)-1, -1, -1):
+            g[k] = a_list.index(a_list[gb[k]]^a_list[g[k-1]])
+        g[0] = gb[0]
+    g.reverse()
+    return g
+
+
+def long_division(mx, a_list, gx, c, n):
+    rx = mx.split(' ')
+    rx = [int(i) for i in rx]
+    for i in range(c):
+        rx.append(0)
+    for i in range(n-1):
+        gx.append(0)
+    while len(rx) > c:
+        h = rx[0]
+        gh = gx.copy()
+        for i in range(c+1):
+            gh[i] = a_list[(gh[i] + a_list.index(h))%255]
+        for i in range(c+1):
+            rx[i] = gh[i]^rx[i]
+        del rx[0]
+        del gx[-1]
+    return rx
+
+
 if __name__ == '__main__':
     with open('testcase.txt') as f:
         lines = f.readlines()
         lines = [i.replace('\n', '') for i in lines]
         alpha_list = []
-        for line in lines:
-            if 2 < len(line) < 8:
-                vmn = line.split(' ')
-                data = get_c(vmn)
-                print('c:', data['c'])
+        msg_list = []
+        data = []
+        for i in range(1, len(lines), 1):
+            if 2 < len(lines[i]) < 8:
+                vmn = lines[i].split(' ')
+                data.append(get_c(vmn))
                 continue
-            print('codewords: ', line)
-        a = generate_alpha(0, 0, alpha_list)
-        print('alpha list:', alpha_list)
+            msg_list.append(lines[i])
+        generate_alpha(0, 0, alpha_list)
+        for i in range(len(msg_list)):
+            print(long_division(msg_list[i], alpha_list, polynomial_generator(alpha_list, data[i]['c']), data[i]['c'], data[i]['N']))
