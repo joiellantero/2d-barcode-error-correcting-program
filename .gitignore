@@ -1,0 +1,6 @@
+.DS_Store
+out_*
+in_*
+*.pdf
+notes*
+*.txt
