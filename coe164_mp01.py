@@ -9,7 +9,7 @@ def get_c(data):
 
 def generate_alpha(i, alpha, a_list):
     if i == 256:
-        return alpha
+        return
     elif i < 8:
         alpha = 2**i
         a_list.append(alpha)
