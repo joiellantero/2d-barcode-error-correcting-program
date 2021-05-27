@@ -170,14 +170,14 @@ Now, we have two for loops. The first one (seen below) is to compute for additio
 
 ```python
 for i in range(c+1):
-            gh[i] = a_list[(gh[i] + a_list.index(h))%255]
+    gh[i] = a_list[(gh[i] + a_list.index(h))%255]
 ```
 
 On the other hand, the second one (seen below) is to obtain the XOR of the elements in `gh` and `rx`. 
 
 ```python
 for i in range(c+1):
-            rx[i] = gh[i]^rx[i]
+    rx[i] = gh[i]^rx[i]
 ```
 
 When the computation is done, we return the value of `rx`.
