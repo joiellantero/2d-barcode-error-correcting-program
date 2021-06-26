@@ -1,4 +1,4 @@
-# CoE 164 MP01 Journal
+# 2d Barcode Error-Correcting Program
 
 # 🚀 Quickstart
 
