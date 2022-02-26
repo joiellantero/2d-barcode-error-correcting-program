@@ -1,6 +1,8 @@
 # 2D Barcode Error-Correcting Program
 
-# 🚀 Quickstart
+[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
+
+## 🚀 Quickstart
 
 ### 1. Programming Language
 
@@ -181,3 +183,12 @@ for i in range(c+1):
 ```
 
 When the computation is done, we return the value of `rx`.
+
+## 👨‍💻 Author
+
+- [Joie Llantero](https://github.com/joiellantero)
+
+
+## 📄 License 
+
+- [MIT license](http://opensource.org/licenses/mit-license.php)
